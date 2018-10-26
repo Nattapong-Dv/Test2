@@ -1,0 +1,35 @@
+<div class="animated fadeIn">
+  <!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+            ตารางแสดงคุณภาพอากาศย้อนหลัง &nbsp;
+          <button type="button" class="btn btn-success btn-sm" (click)="exportfile()">Export to excel file</button>
+        </div>
+        <div class="card-body">
+          <table datatable class="table table-bordered table-striped table-sm row-border hover" style="text-align: center;" [mfData]="userlist" #mf="mfDataTable" [mfRowsOnPage]="3">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>PM10</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of DataAll | async">
+                <td>{{data.Create_at | date:'d/MM/yyyy'}}</td>
+                <td>{{data.Create_at | date:'H:m'}}</td>
+                <td>{{data.PM10}}</td>
+                <td>{{data.Temperature}}</td>
+                <td>{{data.Humidity}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
